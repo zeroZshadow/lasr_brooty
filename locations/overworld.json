@@ -1626,31 +1626,31 @@
                                         "y": 555
                                     }
                                 ]
+                            },
+                            {
+                                "name": "South Moat",
+                                "sections": [
+                                    {
+                                        "name": "Kanalet Moat South",
+                                        "access_rules": [
+                                            "flippers"
+                                        ],
+                                        "item_count": 1,
+                                        "chest_opened_img": "images/items/hp_gray.png",
+                                        "chest_unopened_img": "images/items/hp.png",
+                                        "visibility_rules": [
+                                           "s_hp"
+                                        ]
+                                    }
+                                ],
+                                "map_locations": [
+                                    {
+                                        "map": "map",
+                                        "x": 1578,
+                                        "y": 848
+                                    }
+                                ]
                             }
-                            //{
-                            //    "name": "South Moat",
-                            //    "sections": [
-                            //        {
-                            //            "name": "Kanalet Moat South",
-                            //            "access_rules": [
-                            //                "flippers"
-                            //            ],
-                            //            "item_count": 1,
-                            //            "chest_opened_img": "images/items/hp_gray.png",
-                            //            "chest_unopened_img": "images/items/hp.png",
-                            //            "visibility_rules": [
-                            //               "s_hp"
-                            //            ]
-                            //        }
-                            //    ],
-                            //    "map_locations": [
-                            //        {
-                            //            "map": "map",
-                            //            "x": 1578,
-                            //            "y": 848
-                            //        }
-                            //    ]
-                            //}
                         ]
                     },
                     {
@@ -2494,31 +2494,31 @@
                                 "y": 410
                             }
                         ]
+                    },
+                    {
+                       "name": "Taltal River Cave",
+                        "sections": [
+                            {
+                                "name": "Taltal East Drop",
+                                "item_count": 1,
+                                "access_rules": [
+                                    "flippers"
+                                ],
+                                "chest_opened_img": "images/items/hp_gray.png",
+                                "chest_unopened_img": "images/items/hp.png",
+                                "visibility_rules": [
+                                    "s_hp"
+                                ]
+                            }
+                        ],
+                        "map_locations": [
+                            {
+                                "map": "map",
+                                "x": 2489,
+                                "y": 408
+                            }
+                        ]
                     }
-                    //{
-                    //   "name": "Taltal River Cave",
-                    //    "sections": [
-                    //        {
-                    //            "name": "Taltal East Drop",
-                    //            "item_count": 1,
-                    //            "access_rules": [
-                    //                "flippers"
-                    //            ],
-                    //            "chest_opened_img": "images/items/hp_gray.png",
-                    //            "chest_unopened_img": "images/items/hp.png",
-                    //            "visibility_rules": [
-                    //                "s_hp"
-                    //            ]
-                    //        }
-                    //    ],
-                    //    "map_locations": [
-                    //        {
-                    //            "map": "map",
-                    //            "x": 2489,
-                    //            "y": 408
-                    //        }
-                    //    ]
-                    //}
                 ]
             },
             {
@@ -2911,95 +2911,95 @@
                             }
                         ]
                     },
-                    //{
-                    //    "name": "Bay Passage",
-                    //    "access_rules": [
-                    //        "flippers"
-                    //    ],
-                    //    "sections": [
-                    //        {
-                    //            "name": "Bay Passage Sunken",
-                    //            "item_count": 1,
-                    //            "chest_unopened_img": "images/items/hp.png",
-                    //            "chest_opened_img": "images/items/hp_gray.png",
-                    //            "access_rules": [
-                    //                "rooster,boomerang",
-                    //                "rooster,rod",
-                    //                "feather,boomerang",
-                    //                "feather,rod",
-                    //                "feather,sword",
-                    //                "[l_adv],feather,bombs",
-                    //                "[l_adv],feather,powder",
-                    //                "[l_adv],rooster,bombs",
-                    //                "[l_adv],rooster,powder",
-                    //                "[l_adv],rooster,sword"
-                    //            ],
-                    //            "visibility_rules": [
-                    //                "s_hp"
-                    //            ]
-                    //        }
-                    //    ],
-                    //    "map_locations": [
-                    //        {
-                    //            "map": "map",
-                    //            "x": 1695,
-                    //            "y": 1470
-                    //        }
-                    //    ]
-                    //},
-                    //{
-                    //    "name": "River Crossing",
-                    //    "sections": [
-                    //        {
-                    //            "name": "River Crossing Cave",
-                    //            "item_count": 1,
-                    //            "chest_unopened_img": "images/items/hp.png",
-                    //            "chest_opened_img": "images/items/hp_gray.png",
-                    //            "access_rules": [
-                    //                "$bush,flippers"
-                    //            ],
-                    //            "visibility_rules": [
-                    //                "s_hp"
-                    //            ]
-                    //        }
-                    //    ],
-                    //    "map_locations": [
-                    //        {
-                    //            "map": "map",
-                    //            "x": 1875,
-                    //            "y": 1081
-                    //        },
-                    //        {
-                    //            "map": "map",
-                    //            "x": 2028,
-                    //            "y": 1085
-                    //        }
-                    //    ]
-                    //},
-                    //{
-                    //    "name": "South Bay Pond",
-                    //    "sections": [
-                    //        {
-                    //            "name": "South Bay Sunken",
-                    //            "item_count": 1,
-                    //            "chest_unopened_img": "images/items/hp.png",
-                    //            "chest_opened_img": "images/items/hp_gray.png",
-                    //            "access_rules": [
-                    //                "flippers"
-                    //            ],
-                    //            "visibility_rules": [
-                    //                "s_hp"
-                    //            ]
-                    //        }
-                    //    ],
-                    //    "map_locations": [
-                    //        {
-                    //            "map": "map",
-                    //            "x": 1680,
-                    //            "y": 1415
-                    //        }
-                    //    ]
-                    //},
+                    {
+                        "name": "Bay Passage",
+                        "access_rules": [
+                            "flippers"
+                        ],
+                        "sections": [
+                            {
+                                "name": "Bay Passage Sunken",
+                                "item_count": 1,
+                                "chest_unopened_img": "images/items/hp.png",
+                                "chest_opened_img": "images/items/hp_gray.png",
+                                "access_rules": [
+                                    "rooster,boomerang",
+                                    "rooster,rod",
+                                    "feather,boomerang",
+                                    "feather,rod",
+                                    "feather,sword",
+                                    "[l_adv],feather,bombs",
+                                    "[l_adv],feather,powder",
+                                    "[l_adv],rooster,bombs",
+                                    "[l_adv],rooster,powder",
+                                    "[l_adv],rooster,sword"
+                                ],
+                                "visibility_rules": [
+                                    "s_hp"
+                                ]
+                            }
+                        ],
+                        "map_locations": [
+                            {
+                                "map": "map",
+                                "x": 1695,
+                                "y": 1470
+                            }
+                        ]
+                    },
+                    {
+                        "name": "River Crossing",
+                        "sections": [
+                            {
+                                "name": "River Crossing Cave",
+                                "item_count": 1,
+                                "chest_unopened_img": "images/items/hp.png",
+                                "chest_opened_img": "images/items/hp_gray.png",
+                                "access_rules": [
+                                    "$bush,flippers"
+                                ],
+                                "visibility_rules": [
+                                    "s_hp"
+                                ]
+                            }
+                        ],
+                        "map_locations": [
+                            {
+                                "map": "map",
+                                "x": 1875,
+                                "y": 1081
+                            },
+                            {
+                                "map": "map",
+                                "x": 2028,
+                                "y": 1085
+                            }
+                        ]
+                    },
+                    {
+                        "name": "South Bay Pond",
+                        "sections": [
+                            {
+                                "name": "South Bay Sunken",
+                                "item_count": 1,
+                                "chest_unopened_img": "images/items/hp.png",
+                                "chest_opened_img": "images/items/hp_gray.png",
+                                "access_rules": [
+                                    "flippers"
+                                ],
+                                "visibility_rules": [
+                                    "s_hp"
+                                ]
+                            }
+                        ],
+                        "map_locations": [
+                            {
+                                "map": "map",
+                                "x": 1680,
+                                "y": 1415
+                            }
+                        ]
+                    },
                     {
                         "name": "Bay Maze",
                         "sections": [
@@ -3949,9 +3949,9 @@
                 //"chest_opened_img": "images/Bosses/facade.png",
                 "visibility_rules": "dungeon_er_on",
                 "access_rules": [
-                    "$faceshrine",
-                    "[l_gli],$faceshrine_g1",
-                    "[l_gli],$faceshrine_g2"
+                    "$faceshrine,face",
+                    "[l_gli],$faceshrine_g1,face",
+                    "[l_gli],$faceshrine_g2,face"
                 ],
                 "sections": [
                     {

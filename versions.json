@@ -1,6 +1,14 @@
 {
     "versions": [
         {
+            "package_version": "0.4",
+            "download_url": "https://github.com/Br00ty/lasr_brooty/releases/download/0.4/lasr_brooty.zip",
+            "sha256": "d9974f7db121fd032cc0a842edf0b225f222cf296b0c3ee3bd3c509519d12542",
+            "changelog": [
+                "Re-activated sunken heart pieces"
+            ]
+        },
+        {
             "package_version": "0.3.9",
             "download_url": "https://github.com/Br00ty/lasr_brooty/releases/download/0.3.9/lasr_brooty.zip",
             "sha256": "c516ae07d2a13711000b9eaef72d2afb1d341640db1c6ebc4fc7f05a0fc1ca57",
