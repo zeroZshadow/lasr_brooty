@@ -84,4 +84,6 @@ ITEM_MAPPING = {
     [1279328367] = {"d0sk", "consumable"},  -- key-D0
     [1279328368] = {"d0bk", "toggle"},  -- nightmare-key-D0
     [1279328369] = {"d0beak", "toggle"},  -- stone-beak-D0
+    [1279328372] = {"bowwow", "toggle"},  -- bow-wow
+    [1279328373] = {"rooster", "toggle"},  -- rooster
 }

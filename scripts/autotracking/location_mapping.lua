@@ -346,4 +346,6 @@ LOCATION_MAPPING = {
     [1279394134] = {"@World/Overworld Owls/Ancient Ruins/Owl Statue"},  -- owl-statue-maze
     [1279394135] = {"@World/Rapids/Rapids Middle/Owl Statue"},  -- owl-statue-rapids
     [1279394136] = {"@World/Overworld Owls/Taltal Mountains/Owl Statue"},  -- owl-statue-taltal-east
+    [1279394137] = {"@World/Taltal Heights Swamp Side/Moblin Cave/Save Bowwow"},  -- moblin-cave
+    [1279394138] = {"@World/Mabe Village/Weathervane/Rooster"},  -- rooster-statue
 }

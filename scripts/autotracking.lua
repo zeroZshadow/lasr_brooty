@@ -16,7 +16,6 @@ local SETTING_TOGGLES = {
     ["Golden Leaves"] = "kanalet",
     ["Open Kanalet"] = "opencastle",
     ["Free Book"] = "freebook",
-    ["Bad Pets"] = "badpets",
     ["Open Mabe"] = "openmabe",
     ["Open Mamu"] = "openmamu",
     ["Fast Stalfos"] = "faststalfos",
@@ -34,6 +33,8 @@ local SETTING_STAGES = {
 -- How many Archipelago locations each section stands for, and how many of them are checked
 local SECTION_TOTALS = {}
 local SECTION_CHECKED = {}
+-- The seed the sections show: a reconnect to it keeps the sections, marked by hand or not
+local section_seed = nil
 for _, codes in pairs(LOCATION_MAPPING) do
     for _, code in ipairs(codes) do
         SECTION_TOTALS[code] = (SECTION_TOTALS[code] or 0) + 1
@@ -110,11 +111,16 @@ local function on_clear(slot_data)
     shown_tab = nil
     Archipelago:SetNotify({level_key})
     Archipelago:Get({level_key})
+    -- the server sends every checked location again after this
     SECTION_CHECKED = {}
-    for code, _ in pairs(SECTION_TOTALS) do
-        local section = Tracker:FindObjectForCode(code)
-        if section then
-            section.AvailableChestCount = section.ChestCount
+    local seed = slot_data and slot_data["seed_hash"] or nil
+    if seed == nil or seed ~= section_seed then
+        section_seed = seed
+        for code, _ in pairs(SECTION_TOTALS) do
+            local section = Tracker:FindObjectForCode(code)
+            if section then
+                section.AvailableChestCount = section.ChestCount
+            end
         end
     end
     for _, entry in pairs(ITEM_MAPPING) do
@@ -162,11 +168,12 @@ local function on_location(location_id, location_name)
         local section = Tracker:FindObjectForCode(code)
         if section then
             -- A section can stand for several locations (the Color Dungeon's rupees, shop slots): it empties as
-            -- they are checked.
+            -- they are checked. It never fills up again, so a section cleared by hand stays cleared.
             SECTION_CHECKED[code] = (SECTION_CHECKED[code] or 0) + 1
             local total = SECTION_TOTALS[code]
-            section.AvailableChestCount = section.ChestCount
+            local left = section.ChestCount
                 - math.floor(section.ChestCount * math.min(SECTION_CHECKED[code], total) / total)
+            section.AvailableChestCount = math.min(section.AvailableChestCount, left)
         end
     end
 end
