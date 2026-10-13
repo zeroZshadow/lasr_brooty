@@ -79,7 +79,37 @@ local function apply_settings(settings)
     end
 end
 
+-- The LASAP client keeps the game's level (Field, Lv01TailCave, ...) in data storage; the tracker shows its map.
+local LEVEL_TABS = {
+    Lv01TailCave = "Tail Cave",
+    Lv02BottleGrotto = "Bottle Grotto",
+    Lv03KeyCavern = "Key Cavern",
+    Lv04AnglersTunnel = "Angler's Tunnel",
+    Lv05CatfishsMaw = "Catfish Maw",
+    Lv06FaceShrine = "Face Shrine",
+    Lv07EagleTower = "Eagle Tower",
+    Lv08TurtleRock = "Turtle Rock",
+    Lv10ClothesDungeon = "Color Dungeon",
+}
+local level_key = nil
+local shown_tab = nil
+
+local function show_level(key, level)
+    if key ~= level_key or type(level) ~= "string" or level == "" then
+        return
+    end
+    local tab = LEVEL_TABS[level] or "Overworld"
+    if tab ~= shown_tab then
+        shown_tab = tab
+        Tracker:UiHint("ActivateTab", tab)
+    end
+end
+
 local function on_clear(slot_data)
+    level_key = "las_level_" .. Archipelago.TeamNumber .. "_" .. Archipelago.PlayerNumber
+    shown_tab = nil
+    Archipelago:SetNotify({level_key})
+    Archipelago:Get({level_key})
     SECTION_CHECKED = {}
     for code, _ in pairs(SECTION_TOTALS) do
         local section = Tracker:FindObjectForCode(code)
@@ -144,3 +174,5 @@ end
 Archipelago:AddClearHandler("clear handler", on_clear)
 Archipelago:AddItemHandler("item handler", on_item)
 Archipelago:AddLocationHandler("location handler", on_location)
+Archipelago:AddRetrievedHandler("level retrieved", show_level)
+Archipelago:AddSetReplyHandler("level changed", show_level)

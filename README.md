@@ -9,6 +9,12 @@ This is a Link's Awakening Switch Remake map tracker package for Poptracker.
 - Launch `Poptracker` and select the `Link's Awakening (Switch)` pack variant you'd like to use.
 - You're all set!
 
+## Archipelago auto-tracking
+
+For the Archipelago world "Links Awakening Switch" (LASAP), the `Map Tracker` and `Items Only` variants connect to the Archipelago server (the AP button at the top left: server address and slot name). Received items, checked locations and the seed's settings are tracked, and with the LASAP client running the map follows the dungeon you are in.
+
+`scripts/autotracking/item_mapping.lua` and `location_mapping.lua` are generated from the world's ids by LASAP's `scripts/poptracker_map.py`.
+
 
 ## More Info
 
