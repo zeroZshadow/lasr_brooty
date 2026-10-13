@@ -12,3 +12,8 @@ Tracker:AddLayouts("layouts/items.json")
 Tracker:AddLayouts("layouts/broadcast.json")
 Tracker:AddLayouts("layouts/layouts.json")
 Tracker:AddLayouts("layouts/tracker.json")
+
+-- Archipelago auto-tracking (PopTracker with Archipelago support)
+if Archipelago then
+    ScriptHost:LoadScript("scripts/autotracking.lua")
+end

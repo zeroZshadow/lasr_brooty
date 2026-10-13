@@ -168,7 +168,7 @@
                                 ]
                             },
                             {
-                                "name": "Slot5 1st/2nd",
+                                "name": "Slot5 1st-2nd",
                                 "item_count": 2,
                                 "access_rules": [
                                     "fairyq",

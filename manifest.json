@@ -7,13 +7,15 @@
     "platform": "Switch",
     "variants": {
         "tracker": {
-            "display_name": "Map Tracker"
+            "display_name": "Map Tracker",
+            "flags": ["ap"]
         },
         //"var_entrancepopup": {
         //    "display_name": "Map Tracker (Entrance Tracker Popup)"
         //},
         "var_itemsonly": {
-            "display_name": "Items Only"
+            "display_name": "Items Only",
+            "flags": ["ap"]
         }
     },
     "versions_url": "https://raw.githubusercontent.com/Br00ty/lasr_brooty/master/versions.json"
