@@ -35,6 +35,14 @@ local SECTION_TOTALS = {}
 local SECTION_CHECKED = {}
 -- The seed the sections show: a reconnect to it keeps the sections, marked by hand or not
 local section_seed = nil
+-- A hidden item keeps that seed in the tracker's saved state, so the sections survive a restart of PopTracker too
+local seed_item = ScriptHost:CreateLuaItem()
+seed_item.Name = "Archipelago seed"
+seed_item.PotentialCodes = {}
+seed_item.CanProvideCodeFunc = function(self, code) return false end
+seed_item.ProvidesCodeFunc = function(self, code) return false end
+seed_item.SaveFunc = function(self) return {seed = section_seed} end
+seed_item.LoadFunc = function(self, data) section_seed = data and data.seed or nil end
 for _, codes in pairs(LOCATION_MAPPING) do
     for _, code in ipairs(codes) do
         SECTION_TOTALS[code] = (SECTION_TOTALS[code] or 0) + 1
