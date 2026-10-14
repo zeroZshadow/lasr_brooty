@@ -760,11 +760,18 @@
 		]
 	},
 	{
+		"name": "Fishing",
+		"type": "toggle",
+		"loop": true,
+		"codes": "fishingpond",
+		"img": "images/fishing.png"
+	},
+	{
 		"name": "Fast Fishing",
 		"type": "toggle",
 		"loop": true,
 		"codes": "fishing",
-		"img": "images/fishing.png"
+		"img": "images/items/trade/hook.png"
 	},
 	{
 		"name": "Mad Batter",

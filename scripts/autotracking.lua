@@ -11,6 +11,7 @@ local SETTING_TOGGLES = {
     ["Trade Quest"] = "s_tq",
     ["Trendy Game"] = "trendy",
     ["Rapids"] = "rapids",
+    ["Fishing"] = "fishingpond",
     ["Dampe"] = "dampe",
     ["Blue Rupees"] = "d0rupee",
     ["Golden Leaves"] = "kanalet",

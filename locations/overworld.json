@@ -271,6 +271,9 @@
                         "access_rules": [
                             "$farm"
                         ],
+                        "visibility_rules": [
+                            "fishingpond"
+                        ],
                         "sections": [
                             {
                                 "name": "Fishing Any",
