@@ -31,9 +31,11 @@ local SETTING_STAGES = {
     ["Shuffled Dungeons"] = {"dungeon_er_off", {[false] = 0, [true] = 1}},
 }
 
--- How many Archipelago locations each section stands for, and how many of them are checked
+-- How many of the slot's Archipelago locations each section stands for, and how many of them are checked
 local SECTION_TOTALS = {}
 local SECTION_CHECKED = {}
+-- Every section with an Archipelago location
+local SECTIONS = {}
 -- The seed the sections show: a reconnect to it keeps the sections, marked by hand or not
 local section_seed = nil
 -- A hidden item keeps that seed in the tracker's saved state, so the sections survive a restart of PopTracker too
@@ -46,11 +48,52 @@ seed_item.SaveFunc = function(self) return {seed = section_seed} end
 seed_item.LoadFunc = function(self, data) section_seed = data and data.seed or nil end
 for _, codes in pairs(LOCATION_MAPPING) do
     for _, code in ipairs(codes) do
-        SECTION_TOTALS[code] = (SECTION_TOTALS[code] or 0) + 1
+        SECTIONS[code] = true
     end
 end
+
+-- The slot's locations as a set, or nil when this PopTracker does not tell them
+local function slot_locations()
+    if not Archipelago.MissingLocations or not Archipelago.CheckedLocations then
+        return nil
+    end
+    local slot = {}
+    for _, id in ipairs(Archipelago.MissingLocations) do
+        slot[id] = true
+    end
+    for _, id in ipairs(Archipelago.CheckedLocations) do
+        slot[id] = true
+    end
+    return slot
+end
+
+-- Counts the slot's locations per section (all of them when the slot's are not known). The options leave some out,
+-- such as the fairy's with Free Gifts off; a section with none of the slot's locations has nothing to check.
+local function count_sections()
+    local slot = slot_locations()
+    SECTION_TOTALS = {}
+    for id, codes in pairs(LOCATION_MAPPING) do
+        if not slot or slot[id] then
+            for _, code in ipairs(codes) do
+                SECTION_TOTALS[code] = (SECTION_TOTALS[code] or 0) + 1
+            end
+        end
+    end
+    for code, _ in pairs(SECTIONS) do
+        local section = Tracker:FindObjectForCode(code)
+        if section and not SECTION_TOTALS[code] then
+            section.AvailableChestCount = 0
+        end
+    end
+end
+
 -- The Wind Fish's Egg path, marked by hand: one arrow per step, back to its first stage for another seed
 local EGG_PATH = {"up1", "up2", "up3", "up4", "up5", "up6", "up7", "up8"}
+-- Items a section hosts that no Archipelago item sets: PopTracker sets a hosted item only when the section is
+-- clicked, and shows the section unchecked until it is set. They are set once the section's checks are all in.
+local HOSTED = {
+    ["@Dungeons/D0 - Color Dungeon/Fairy Queen/Red|Blue Tunic"] = "fairyq",  -- the Color Dungeon cleared
+}
 
 local function reset_item(code, kind)
     local obj = Tracker:FindObjectForCode(code)
@@ -127,7 +170,7 @@ local function on_clear(slot_data)
     local seed = slot_data and slot_data["seed_hash"] or nil
     if seed == nil or seed ~= section_seed then
         section_seed = seed
-        for code, _ in pairs(SECTION_TOTALS) do
+        for code, _ in pairs(SECTIONS) do
             local section = Tracker:FindObjectForCode(code)
             if section then
                 section.AvailableChestCount = section.ChestCount
@@ -139,7 +182,14 @@ local function on_clear(slot_data)
                 arrow.CurrentStage = 0
             end
         end
+        for _, code in pairs(HOSTED) do
+            local obj = Tracker:FindObjectForCode(code)
+            if obj then
+                obj.Active = false
+            end
+        end
     end
+    count_sections()
     for _, entry in pairs(ITEM_MAPPING) do
         reset_item(entry[1], type(entry[2]) == "number" and "stage" or entry[2])
     end
@@ -187,10 +237,14 @@ local function on_location(location_id, location_name)
             -- A section can stand for several locations (the Color Dungeon's rupees, shop slots): it empties as
             -- they are checked. It never fills up again, so a section cleared by hand stays cleared.
             SECTION_CHECKED[code] = (SECTION_CHECKED[code] or 0) + 1
-            local total = SECTION_TOTALS[code]
+            local total = math.max(SECTION_TOTALS[code] or 0, SECTION_CHECKED[code])
             local left = section.ChestCount
                 - math.floor(section.ChestCount * math.min(SECTION_CHECKED[code], total) / total)
             section.AvailableChestCount = math.min(section.AvailableChestCount, left)
+            local hosted = HOSTED[code] and Tracker:FindObjectForCode(HOSTED[code])
+            if hosted and SECTION_CHECKED[code] >= total then
+                hosted.Active = true
+            end
         end
     end
 end
