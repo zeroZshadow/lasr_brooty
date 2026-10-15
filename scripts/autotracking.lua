@@ -49,6 +49,8 @@ for _, codes in pairs(LOCATION_MAPPING) do
         SECTION_TOTALS[code] = (SECTION_TOTALS[code] or 0) + 1
     end
 end
+-- The Wind Fish's Egg path, marked by hand: one arrow per step, back to its first stage for another seed
+local EGG_PATH = {"up1", "up2", "up3", "up4", "up5", "up6", "up7", "up8"}
 
 local function reset_item(code, kind)
     local obj = Tracker:FindObjectForCode(code)
@@ -129,6 +131,12 @@ local function on_clear(slot_data)
             local section = Tracker:FindObjectForCode(code)
             if section then
                 section.AvailableChestCount = section.ChestCount
+            end
+        end
+        for _, code in ipairs(EGG_PATH) do
+            local arrow = Tracker:FindObjectForCode(code)
+            if arrow then
+                arrow.CurrentStage = 0
             end
         end
     end
