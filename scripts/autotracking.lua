@@ -196,6 +196,10 @@ local function on_clear(slot_data)
     if slot_data and slot_data["settings"] then
         apply_settings(slot_data["settings"])
     end
+    local required = Tracker:FindObjectForCode("instruments_required")
+    if required and slot_data and slot_data["instruments_required"] then
+        required.AcquiredCount = slot_data["instruments_required"]
+    end
 end
 
 local function on_item(index, item_id, item_name, player_number)

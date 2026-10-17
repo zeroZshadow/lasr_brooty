@@ -107,9 +107,17 @@ function farm()
     return (bracelet() or sword() or rod() or boomerang() or k_octorok() or shovel())
 end
 
+-- The Wind Fish's Egg opens with the setting's number of instruments (Instruments Required)
+local INSTRUMENTS = {"cello", "conch", "bell", "harp", "marimba", "triangle", "organ", "drum"}
+
 function instruments()
-    return (has("cello") and has("conch") and has("bell") and has("harp") and has("marimba") and has("triangle") and
-               has("organ") and has("drum"))
+    local held = 0
+    for _, code in ipairs(INSTRUMENTS) do
+        if has(code) then
+            held = held + 1
+        end
+    end
+    return held >= Tracker:ProviderCountForCode("instruments_required")
 end
 
 function rooster()

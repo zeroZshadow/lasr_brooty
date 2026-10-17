@@ -898,6 +898,16 @@
 		]
 	},
 	{
+		"name": "Instruments Required",
+		"type": "consumable",
+		"codes": "instruments_required",
+		"min_quantity": 0,
+		"max_quantity": 8,
+		"initial_quantity": 8,
+		"overlay_background": "#000000",
+		"img": "images/items/instruments/cello.png"
+	},
+	{
 		"name": "Dungeon ER",
 		"type": "progressive",
 		"allow_disabled": false,

@@ -246,6 +246,9 @@
                 "faststalfos",
                 "s_never",
                 "fishing"
+              ],
+              [
+                "instruments_required"
               ]
             ]
           }
