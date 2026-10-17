@@ -485,7 +485,7 @@
                         ]
                     },
                     {
-                        "name": "Blocks Everywhere!",
+                        "name": "Blocks Everywhere",
                         "sections": [
                             {
                                 "name": "Chest",
@@ -842,7 +842,7 @@
                         ]
                     },
                     {
-                        "name": "Kill the Zols!",
+                        "name": "Kill the Five Zols",
                         "sections": [
                             {
                                 "name": "Key Drop",
@@ -2330,7 +2330,7 @@
                         ]
                     },
                     {
-                        "name": "Grim Creeper (Not Sans Undertale)",
+                        "name": "Grim Creeper",
                         "sections": [
                             {
                                 "name": "Chest",
@@ -2637,7 +2637,7 @@
                         ]
                     },
                     {
-                        "name": "Surrounded By Blocks",
+                        "name": "Surrounded by Blocks",
                         "sections": [
                             {
                                 "name": "Chest",
@@ -2945,7 +2945,7 @@
                         ]
                     },
                     {
-                        "name": "Rupee Hype Room",
+                        "name": "Rupee Room",
                         "visibility_rules": [
                             "d0rupee"
                         ],

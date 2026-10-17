@@ -319,7 +319,7 @@
                                 ]
                             },
                             {
-                                "name": "Fishing ol Baron",
+                                "name": "Fishing Ol' Baron",
                                 "item_count": 1,
                                 "chest_unopened_img": "images/items/chamber.png",
                                 "chest_opened_img": "images/items/chamber_gray.png",
@@ -371,7 +371,7 @@
                         "name": "Beach Tree",
                         "sections": [
                             {
-                                "name": "beach Bonk Tree",
+                                "name": "Beach Bonk Tree",
                                 "item_count": 1,
                                 "access_rules": [
                                     "boots"
@@ -556,7 +556,7 @@
                         ]
                     },
                     {
-                        "name": "Goryia Cave",
+                        "name": "Goriya Cave",
                         "access_rules": [
                             "bombs,lens"
                         ],
@@ -843,10 +843,10 @@
                         ]
                     },
                     {
-                        "name": "Holes Everywhere!",
+                        "name": "Diamond Island",
                         "sections": [
                             {
-                                "name": "Heart Piece of Shame",
+                                "name": "Heart Piece",
                                 "item_count": 1,
                                 "access_rules": [
                                     "feather",
@@ -2250,7 +2250,7 @@
                         ],
                         "sections": [
                             {
-                                "name": "Tal Tal Left Ascent Cave",
+                                "name": "Taltal Left Ascent Cave",
                                 "item_count": 1
                             }
                         ],
@@ -3125,7 +3125,7 @@
                         "name": "Pond House",
                         "sections": [
                             {
-                                "name": "Invizible Zora",
+                                "name": "Invisible Zora",
                                 "item_count": 1,
                                 "chest_unopened_img": "images/items/shell.png",
                                 "chest_opened_img": "images/items/shell_gray.png",
@@ -3463,8 +3463,8 @@
                         "ref": "D2 - Bottle Grotto/The Lonely Chest/Chest"
                     },
                     {
-                        "name": "Blocks Everywhere!",
-                        "ref": "D2 - Bottle Grotto/Blocks Everywhere!/Chest"
+                        "name": "Blocks Everywhere",
+                        "ref": "D2 - Bottle Grotto/Blocks Everywhere/Chest"
                     },
                     {
                         "name": "Just a couple Boos",
@@ -3564,8 +3564,8 @@
                         "ref": "D3 - Key Cavern/South Ceiling Key/Key Drop"
                     },
                     {
-                        "name": "Kill the Zols!",
-                        "ref": "D3 - Key Cavern/Kill the Zols!/Key Drop"
+                        "name": "Kill the Five Zols",
+                        "ref": "D3 - Key Cavern/Kill the Five Zols/Key Drop"
                     },
                     {
                         "name": "Pairodd Ceiling Key",
@@ -4033,8 +4033,8 @@
                         "ref": "D7 - Eagle Tower/Three-of-a-kind Hookshot Chest/Chest"
                     },
                     {
-                        "name": "Grim Creeper (Not Sans Undertale)",
-                        "ref": "D7 - Eagle Tower/Grim Creeper (Not Sans Undertale)/Chest"
+                        "name": "Grim Creeper",
+                        "ref": "D7 - Eagle Tower/Grim Creeper/Chest"
                     },
                     {
                         "name": "Conveyor Horseheads",
@@ -4130,8 +4130,8 @@
                         "ref": "D8 - Turtle Rock/Owl (Above Smasher)/Owl"
                     },
                     {
-                        "name": "Surrounded By Blocks",
-                        "ref": "D8 - Turtle Rock/Surrounded By Blocks/Chest"
+                        "name": "Surrounded by Blocks",
+                        "ref": "D8 - Turtle Rock/Surrounded by Blocks/Chest"
                     },
                     {
                         "name": "Arrow Statue",
@@ -4233,8 +4233,8 @@
                         "ref": "D0 - Color Dungeon/Owl (First Switches)/Owl"
                     },
                     {
-                        "name": "Rupee Hype Room",
-                        "ref": "D0 - Color Dungeon/Rupee Hype Room/Rupees"
+                        "name": "Rupee Room",
+                        "ref": "D0 - Color Dungeon/Rupee Room/Rupees"
                     },
                     {
                         "name": "Orb Enemy Chest",

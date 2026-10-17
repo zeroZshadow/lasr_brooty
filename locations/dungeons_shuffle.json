@@ -451,7 +451,7 @@
                         ]
                     },
                     {
-                        "name": "Blocks Everywhere!",
+                        "name": "Blocks Everywhere",
                         "sections": [
                             {
                                 "item_count": 1,
@@ -720,7 +720,7 @@
                         ]
                     },
                     {
-                        "name": "Kill the Zols!",
+                        "name": "Kill the Five Zols",
                         "sections": [
                             {
                                 "item_count": 1,
@@ -1953,7 +1953,7 @@
                         ]
                     },
                     {
-                        "name": "Grim Creeper (Not Sans Undertale)",
+                        "name": "Grim Creeper",
                         "sections": [
                             {
                                 "item_count": 1,
@@ -2412,7 +2412,7 @@
                         ]
                     },
                     {
-                        "name": "Rupee Hype Room",
+                        "name": "Rupee Room",
                         "visibility_rules": [
                             "d0rupee"
                         ],
