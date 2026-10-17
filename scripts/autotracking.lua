@@ -11,7 +11,6 @@ local SETTING_TOGGLES = {
     ["Trade Quest"] = "s_tq",
     ["Trendy Game"] = "trendy",
     ["Rapids"] = "rapids",
-    ["Fishing"] = "fishingpond",
     ["Dampe"] = "dampe",
     ["Blue Rupees"] = "d0rupee",
     ["Golden Leaves"] = "kanalet",
@@ -20,7 +19,6 @@ local SETTING_TOGGLES = {
     ["Open Mabe"] = "openmabe",
     ["Open Mamu"] = "openmamu",
     ["Fast Stalfos"] = "faststalfos",
-    ["Fast Fishing"] = "fishing",
 }
 -- Progressive settings: LASR setting -> {item code, {LASR value -> stage}}
 local SETTING_STAGES = {
@@ -123,6 +121,11 @@ local function apply_settings(settings)
         if obj and stage then
             obj.CurrentStage = stage
         end
+    end
+    -- One item for both fishing settings: No Fishing, Fishing (the pond's checks), Fast Fishing
+    local fishing = Tracker:FindObjectForCode("fishing_off")
+    if fishing and settings["Fishing"] ~= nil then
+        fishing.CurrentStage = settings["Fishing"] and (settings["Fast Fishing"] and 2 or 1) or 0
     end
     local mansion = Tracker:FindObjectForCode("mansion")
     if mansion and settings["Seashell Mansion"] then

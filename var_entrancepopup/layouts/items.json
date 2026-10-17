@@ -215,7 +215,7 @@
               ],
               [
                 "shop",
-                "fishingpond",
+                "fishing_off",
                 "owlstatue",
                 "mansion",
                 "freebook"
@@ -244,8 +244,7 @@
               [
                 "openmamu",
                 "faststalfos",
-                "s_never",
-                "fishing"
+                "s_never"
               ]
             ]
           },
