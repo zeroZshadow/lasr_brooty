@@ -565,8 +565,9 @@ function bottlegrotto_classic_adv()
     return (bottlegrotto_classic() or (swamp_adv() and k_flower()))
 end
 
+-- Kiki's bridge next to Kanalet Castle, built as with LASR's Completed Bridge setting (on by default)
 function bridge()
-    return bracelet()
+    return plains()
 end
 
 function catfishmaw()
@@ -645,7 +646,7 @@ function f_out()
 end
 
 function kanalet()
-    return (bracelet() and feather())
+    return (bridge() and bush() and feather())
 end
 
 function keycavern()

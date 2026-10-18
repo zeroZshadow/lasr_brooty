@@ -1887,8 +1887,7 @@
                 "name": "Kanalet Castle",
                 "access_rules": [
                     "$kanalet",
-                    "bracelet,opencastle",
-                    "openmabe,opencastle"
+                    "$plains,opencastle,$bush"
                 ],
                 "children": [
                     {
