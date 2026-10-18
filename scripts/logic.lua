@@ -109,6 +109,9 @@ end
 
 -- The Wind Fish's Egg opens with the setting's number of instruments (Instruments Required)
 local INSTRUMENTS = {"cello", "conch", "bell", "harp", "marimba", "triangle", "organ", "drum"}
+-- Auto-tracking hides a count left to chance until the player reads the sign at the egg's stairs: Instruments
+-- Required then shows "?" (count 0), and the egg needs all eight.
+INSTRUMENTS_HIDDEN = false
 
 function instruments()
     local held = 0
@@ -117,7 +120,11 @@ function instruments()
             held = held + 1
         end
     end
-    return held >= Tracker:ProviderCountForCode("instruments_required")
+    local required = Tracker:ProviderCountForCode("instruments_required")
+    if INSTRUMENTS_HIDDEN and required == 0 then
+        required = #INSTRUMENTS
+    end
+    return held >= required
 end
 
 function rooster()

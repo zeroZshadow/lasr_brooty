@@ -152,6 +152,26 @@ local LEVEL_TABS = {
 }
 local level_key = nil
 local shown_tab = nil
+-- The LASAP client sets this key to true once the player has read the sign at the egg's stairs, which names the
+-- instruments the egg needs. A count left to chance (slot data instruments_known false) stays "?" until then.
+local sign_key = nil
+local instruments_required = 8
+
+local function show_instruments(hidden)
+    local required = Tracker:FindObjectForCode("instruments_required")
+    if not required then
+        return
+    end
+    INSTRUMENTS_HIDDEN = hidden
+    required:SetOverlay(hidden and "?" or "")
+    required.AcquiredCount = hidden and 0 or instruments_required
+end
+
+local function sign_read(key, value)
+    if key == sign_key and value == true and INSTRUMENTS_HIDDEN then
+        show_instruments(false)
+    end
+end
 
 local function show_level(key, level)
     if key ~= level_key or type(level) ~= "string" or level == "" then
@@ -167,8 +187,9 @@ end
 local function on_clear(slot_data)
     level_key = "las_level_" .. Archipelago.TeamNumber .. "_" .. Archipelago.PlayerNumber
     shown_tab = nil
-    Archipelago:SetNotify({level_key})
-    Archipelago:Get({level_key})
+    sign_key = "las_sign_" .. Archipelago.TeamNumber .. "_" .. Archipelago.PlayerNumber
+    Archipelago:SetNotify({level_key, sign_key})
+    Archipelago:Get({level_key, sign_key})
     -- the server sends every checked location again after this
     SECTION_CHECKED = {}
     local seed = slot_data and slot_data["seed_hash"] or nil
@@ -200,9 +221,10 @@ local function on_clear(slot_data)
     if slot_data and slot_data["settings"] then
         apply_settings(slot_data["settings"])
     end
-    local required = Tracker:FindObjectForCode("instruments_required")
-    if required and slot_data and slot_data["instruments_required"] then
-        required.AcquiredCount = slot_data["instruments_required"]
+    if slot_data and slot_data["instruments_required"] then
+        instruments_required = slot_data["instruments_required"]
+        -- slot data without instruments_known (an older world) counts as known
+        show_instruments(slot_data["instruments_known"] == false)
     end
 end
 
@@ -262,3 +284,5 @@ Archipelago:AddItemHandler("item handler", on_item)
 Archipelago:AddLocationHandler("location handler", on_location)
 Archipelago:AddRetrievedHandler("level retrieved", show_level)
 Archipelago:AddSetReplyHandler("level changed", show_level)
+Archipelago:AddRetrievedHandler("sign retrieved", sign_read)
+Archipelago:AddSetReplyHandler("sign read", sign_read)
