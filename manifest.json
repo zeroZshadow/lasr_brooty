@@ -17,6 +17,5 @@
             "display_name": "Items Only",
             "flags": ["ap"]
         }
-    },
-    "versions_url": "https://raw.githubusercontent.com/Br00ty/lasr_brooty/master/versions.json"
+    }
 }
