@@ -88,6 +88,9 @@ end
 
 -- The Wind Fish's Egg path, marked by hand: one arrow per step, back to its first stage for another seed
 local EGG_PATH = {"up1", "up2", "up3", "up4", "up5", "up6", "up7", "up8"}
+-- Dungeon ER: the dungeon each door leads into, marked by hand, back to Unknown for another seed. Slot data has the
+-- doors (dungeon_entrances), but the player finds them by entering, so the tracker does not set them.
+local DOORS = {"tcdX", "bgdX", "kcdX", "atdX", "cmdX", "fsdX", "etdX", "trdX", "cddX"}
 -- Items a section hosts that no Archipelago item sets: PopTracker sets a hosted item only when the section is
 -- clicked, and shows the section unchecked until it is set. They are set once the section's checks are all in.
 local HOSTED = {
@@ -201,10 +204,12 @@ local function on_clear(slot_data)
                 section.AvailableChestCount = section.ChestCount
             end
         end
-        for _, code in ipairs(EGG_PATH) do
-            local arrow = Tracker:FindObjectForCode(code)
-            if arrow then
-                arrow.CurrentStage = 0
+        for _, codes in ipairs({EGG_PATH, DOORS}) do
+            for _, code in ipairs(codes) do
+                local obj = Tracker:FindObjectForCode(code)
+                if obj then
+                    obj.CurrentStage = 0
+                end
             end
         end
         for _, code in pairs(HOSTED) do
