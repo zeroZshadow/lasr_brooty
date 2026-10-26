@@ -639,11 +639,12 @@ function ghostgrave()
 end
 
 function ghosthouse()
-    return bracelet()
+    return ((beach() and bracelet()) or (plains() and (dashjump() or rooster())))
 end
 
+-- Also up the river from the prairie, through the rapids or the Tal Tal river
 function heights()
-    return bracelet()
+    return (bracelet() or (taltal_river() and water()) or (rapids() and (hookshot() or water())))
 end
 
 function heights_g()
@@ -659,7 +660,7 @@ function kanalet()
 end
 
 function keycavern()
-    return (bracelet() and (feather() or water()) and has("slime"))
+    return (plains() and (feather() or water()) and has("slime"))
 end
 
 function mabe()
@@ -675,7 +676,7 @@ function plains()
 end
 
 function pothole()
-    return (bracelet()) -- 0 and has("goldleaf",5)
+    return plains()
 end
 
 function pothole2()

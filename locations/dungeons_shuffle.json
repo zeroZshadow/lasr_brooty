@@ -1379,8 +1379,8 @@
                             {
                                 "item_count": 1,
                                 "access_rules": [
-                                    "$k_helmasaur,$k_keese,$k_stalfosred,$k_stalfosyellow,$k_masterstalfos,feather,d5sk:1,[d5sk:1]",
-                                    "$k_helmasaur,$k_keese,$k_stalfosred,$k_stalfosyellow,$k_masterstalfos,hookshot,d5sk:1,[d5sk:1]"
+                                    "$k_helmasaur,$k_keese,$k_stalfosred,$k_stalfosyellow,$k_masterstalfos,$pot,$k_zolg,feather,d5sk:1,[d5sk:1]",
+                                    "$k_helmasaur,$k_keese,$k_stalfosred,$k_stalfosyellow,$k_masterstalfos,$pot,$k_zolg,hookshot,d5sk:1,[d5sk:1]"
                                 ]
                             }
                         ],
