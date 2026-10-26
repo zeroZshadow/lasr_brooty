@@ -88,9 +88,19 @@ end
 
 -- The Wind Fish's Egg path, marked by hand: one arrow per step, back to its first stage for another seed
 local EGG_PATH = {"up1", "up2", "up3", "up4", "up5", "up6", "up7", "up8"}
--- Dungeon ER: the dungeon each door leads into, marked by hand, back to Unknown for another seed. Slot data has the
--- doors (dungeon_entrances), but the player finds them by entering, so the tracker does not set them.
-local DOORS = {"tcdX", "bgdX", "kcdX", "atdX", "cmdX", "fsdX", "etdX", "trdX", "cddX"}
+-- Dungeon ER: each dungeon's door, by its name in the slot data's dungeon_entrances. Its item's stage is the dungeon it
+-- leads into (DUNGEON_STAGES, 0 Unknown, 10 Dungeon Completed), marked by hand or found (below), back to Unknown for
+-- another seed.
+local DOORS = {
+    ["tail-cave"] = "tcdX", ["bottle-grotto"] = "bgdX", ["key-cavern"] = "kcdX", ["angler-tunnel"] = "atdX",
+    ["catfish-maw"] = "cmdX", ["face-shrine"] = "fsdX", ["eagle-tower"] = "etdX", ["turtle-rock"] = "trdX",
+    ["color-dungeon"] = "cddX",
+}
+local DUNGEON_STAGES = {
+    ["tail-cave"] = 1, ["bottle-grotto"] = 2, ["key-cavern"] = 3, ["angler-tunnel"] = 4, ["catfish-maw"] = 5,
+    ["face-shrine"] = 6, ["eagle-tower"] = 7, ["turtle-rock"] = 8, ["color-dungeon"] = 9,
+}
+local DOOR_COMPLETED = 10
 -- Items a section hosts that no Archipelago item sets: PopTracker sets a hosted item only when the section is
 -- clicked, and shows the section unchecked until it is set. They are set once the section's checks are all in.
 local HOSTED = {
@@ -176,6 +186,22 @@ local function sign_read(key, value)
     end
 end
 
+-- The LASAP client adds each door the player has found, by entering the dungeon behind it, to this key: {door =
+-- dungeon}, by dungeon_entrances names. The tracker shows it, unless the door is marked as Dungeon Completed.
+local doors_key = nil
+
+local function doors_found(key, doors)
+    if key ~= doors_key or type(doors) ~= "table" then
+        return
+    end
+    for door, dungeon in pairs(doors) do
+        local obj = DOORS[door] and Tracker:FindObjectForCode(DOORS[door])
+        if obj and DUNGEON_STAGES[dungeon] and obj.CurrentStage ~= DOOR_COMPLETED then
+            obj.CurrentStage = DUNGEON_STAGES[dungeon]
+        end
+    end
+end
+
 local function show_level(key, level)
     if key ~= level_key or type(level) ~= "string" or level == "" then
         return
@@ -191,8 +217,10 @@ local function on_clear(slot_data)
     level_key = "las_level_" .. Archipelago.TeamNumber .. "_" .. Archipelago.PlayerNumber
     shown_tab = nil
     sign_key = "las_sign_" .. Archipelago.TeamNumber .. "_" .. Archipelago.PlayerNumber
-    Archipelago:SetNotify({level_key, sign_key})
-    Archipelago:Get({level_key, sign_key})
+    doors_key = "las_doors_" .. Archipelago.TeamNumber .. "_" .. Archipelago.PlayerNumber
+    -- the replies come after this handler, so the doors found show over the reset below
+    Archipelago:SetNotify({level_key, sign_key, doors_key})
+    Archipelago:Get({level_key, sign_key, doors_key})
     -- the server sends every checked location again after this
     SECTION_CHECKED = {}
     local seed = slot_data and slot_data["seed_hash"] or nil
@@ -204,12 +232,16 @@ local function on_clear(slot_data)
                 section.AvailableChestCount = section.ChestCount
             end
         end
-        for _, codes in ipairs({EGG_PATH, DOORS}) do
-            for _, code in ipairs(codes) do
-                local obj = Tracker:FindObjectForCode(code)
-                if obj then
-                    obj.CurrentStage = 0
-                end
+        for _, code in ipairs(EGG_PATH) do
+            local arrow = Tracker:FindObjectForCode(code)
+            if arrow then
+                arrow.CurrentStage = 0
+            end
+        end
+        for _, code in pairs(DOORS) do
+            local door = Tracker:FindObjectForCode(code)
+            if door then
+                door.CurrentStage = 0
             end
         end
         for _, code in pairs(HOSTED) do
@@ -291,3 +323,5 @@ Archipelago:AddRetrievedHandler("level retrieved", show_level)
 Archipelago:AddSetReplyHandler("level changed", show_level)
 Archipelago:AddRetrievedHandler("sign retrieved", sign_read)
 Archipelago:AddSetReplyHandler("sign read", sign_read)
+Archipelago:AddRetrievedHandler("doors retrieved", doors_found)
+Archipelago:AddSetReplyHandler("door found", doors_found)
