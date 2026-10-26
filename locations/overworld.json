@@ -2165,6 +2165,7 @@
                 "name": "Rapids From D6",
                 "access_rules": [
                     "$faceshrine,$switchfar,$pot,bracelet2",
+                    "dungeon_er_on,$fs_dungeon,$switchfar,$pot,bracelet2",
                     "[l_gli],$faceshrine_g1,$switchfar,$pot,bracelet2,dungeon_er_off",
                     "[l_gli],$faceshrine_g2"
                 ],
@@ -3951,8 +3952,8 @@
                 //"chest_opened_img": "images/Bosses/facade.png",
                 "visibility_rules": "dungeon_er_on",
                 "access_rules": [
-                    "$faceshrine,face",
-                    "[l_gli],$faceshrine_g1,face",
+                    "$faceshrine_door,face",
+                    "[l_gli],$faceshrine_door_g,face",
                     "[l_gli],$faceshrine_g2,face"
                 ],
                 "sections": [

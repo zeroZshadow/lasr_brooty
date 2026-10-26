@@ -613,12 +613,21 @@ function egg()
     return (bracelet() and has("ocarina") and has("ballad") and instruments())
 end
 
+-- The Face Shrine's door, without the Face Key: with Dungeon ER it leads to whichever dungeon its pin marks
+function faceshrine_door()
+    return (river() and (hookshot() or rooster()))
+end
+
+function faceshrine_door_g()
+    return (armosmaze() and bracelet() and boots() and feather() and sword())
+end
+
 function faceshrine()
-    return (river() and (hookshot() or rooster()) and ((has("face") and has("dungeon_er_off")) or (has("dungeon_er_on") and fs_dungeon())))
+    return (faceshrine_door() and ((has("face") and has("dungeon_er_off")) or (has("dungeon_er_on") and fs_dungeon())))
 end
 
 function faceshrine_g1()
-    return (faceshrine() or (armosmaze() and bracelet() and boots() and feather() and sword() and has("face")))
+    return (faceshrine() or (faceshrine_door_g() and has("face")))
 end
 
 function faceshrine_g2()
