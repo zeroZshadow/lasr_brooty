@@ -482,6 +482,7 @@ function crystal_switch()
     return (sword() or bombs() or bow() or hookshot() or boomerang() or rod())
 end
 
+-- Breaking a pot; throwing one (at a door or an enemy) needs bracelet()
 function pot()
     return (bracelet() or bombs() or sword2())
 end
