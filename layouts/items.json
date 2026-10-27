@@ -246,6 +246,9 @@
                 "faststalfos",
                 "s_never",
                 "instruments_required"
+              ],
+              [
+                "completedbridge"
               ]
             ]
           }

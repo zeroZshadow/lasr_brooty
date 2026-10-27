@@ -574,9 +574,9 @@ function bottlegrotto_classic_adv()
     return (bottlegrotto_classic() or (swamp_adv() and k_flower()))
 end
 
--- Kiki's bridge next to Kanalet Castle, built as with LASR's Completed Bridge setting (on by default)
+-- Kiki's bridge next to Kanalet Castle: built with the bananas or the Completed Bridge setting, or swum around
 function bridge()
-    return plains()
+    return (plains() and (has("bananas") or has("completedbridge") or water()))
 end
 
 function catfishmaw()

@@ -850,6 +850,13 @@
 		"img": "images/castle.png"
 	},
 	{
+		"name": "Completed Bridge",
+		"type": "toggle",
+		"loop": true,
+		"codes": "completedbridge",
+		"img": "images/completedbridge.png"
+	},
+	{
 		"name": "Free Book",
 		"type": "toggle",
 		"loop": true,

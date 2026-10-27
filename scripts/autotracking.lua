@@ -15,6 +15,7 @@ local SETTING_TOGGLES = {
     ["Blue Rupees"] = "d0rupee",
     ["Golden Leaves"] = "kanalet",
     ["Open Kanalet"] = "opencastle",
+    ["Completed Bridge"] = "completedbridge",
     ["Free Book"] = "freebook",
     ["Open Mabe"] = "openmabe",
     ["Open Mamu"] = "openmamu",
